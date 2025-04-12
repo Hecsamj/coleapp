@@ -1,0 +1,100 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Área de Atletismo -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/areaatletismo"
+            android:contentDescription="Área de Atletismo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Área de Atletismo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espacio equipado con pista de carreras y zonas de salto, diseñado para la práctica de velocidad, resistencia y lanzamientos."
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Área de Fútbol -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/areafutbol"
+            android:contentDescription="Área de Fútbol" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Área de Fútbol"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Campo de fútbol con césped sintético y porterías reglamentarias, ideal para entrenamientos y torneos."
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Área de Básquet -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/areabasket"
+            android:contentDescription="Área de Básquet" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Área de Básquet"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancha techada con tableros de acrílico y marcadores digitales, diseñada para el entrenamiento y competencias de básquetbol."
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+
+        <!-- Área de Natación -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/areanatacion"
+            android:contentDescription="Área de Natación" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Área de Natación"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piscina semiolímpica con carriles de entrenamiento y zona para iniciación en natación."
+            android:textSize="14sp"
+            android:paddingBottom="16dp" />
+        <Button
+            android:id="@+id/btnR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

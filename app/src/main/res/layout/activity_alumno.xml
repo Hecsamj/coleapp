@@ -1,0 +1,125 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del Alumno"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMatricula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrícula"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvGrado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grado"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvApellidoPaterno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apellido Paterno"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvApellidoMaterno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apellido Materno"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvColegioProcedencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colegio de Procedencia"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvFechaNacimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha de Nacimiento"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <!-- Spinner para seleccionar Primaria o Secundaria -->
+        <Spinner
+            android:id="@+id/spinnerNivel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:minHeight="48dp"
+            android:layout_marginTop="16dp"
+            android:textAlignment="center" />
+
+        <!-- Spinner para seleccionar el grado -->
+        <Spinner
+            android:id="@+id/spinnerGrado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:minHeight="48dp"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center" />
+
+        <!-- Botón para actualizar cursos según el grado y nivel seleccionado -->
+        <Button
+            android:id="@+id/btnActualizarCursos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar Cursos"
+            android:layout_marginTop="8dp" />
+
+        <!-- Contenedor donde se agregarán dinámicamente los cursos -->
+        <LinearLayout
+            android:id="@+id/contenedorCursos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp" />
+
+        <!-- Separador de espacio entre el contenido y el botón de Cerrar Sesión -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp"/>
+
+        <!-- Botón para Cerrar Sesión -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesión"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

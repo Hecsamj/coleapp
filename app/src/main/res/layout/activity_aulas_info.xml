@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/aulamate"
+            android:contentDescription="Aula de Matemáticas" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aula de Matemáticas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El aula de matemáticas está equipada con herramientas digitales e interactivas para mejorar el aprendizaje de conceptos numéricos, álgebra, geometría y cálculo."
+            android:textSize="16sp"
+            android:paddingTop="4dp" />
+
+
+        <ImageView
+            android:id="@+id/imgAulaQuimica"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/aulaquimica"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txtAulaQuimica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aula de Química"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:id="@+id/descAulaQuimica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laboratorio equipado para experimentos químicos y físicos."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+        <ImageView
+            android:id="@+id/imgAulaProgramacion"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/aulaprograma" />
+
+        <TextView
+            android:id="@+id/txtAulaProgramacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aula de Programación"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:id="@+id/descAulaProgramacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espacio con computadoras y software especializado para codificación."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+
+        <ImageView
+            android:id="@+id/imgAulaComunicacion"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/aulacomunica" />
+
+        <TextView
+            android:id="@+id/txtAulaComunicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aula de Comunicación"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:id="@+id/descAulaComunicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sala con equipos multimedia para desarrollar habilidades de comunicación."
+            android:textSize="16sp"
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+</ScrollView>

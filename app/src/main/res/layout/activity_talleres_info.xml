@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Taller de Literatura -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/tallerliteratura"
+            android:contentDescription="Taller de Literatura" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller de Literatura"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espacio dedicado a la creación y análisis literario, promoviendo la escritura creativa y la lectura crítica."
+            android:paddingBottom="16dp" />
+
+        <!-- Taller de Pintura -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/tallerpintura"
+            android:contentDescription="Taller de Pintura" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller de Pintura"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se enseña teoría y técnicas de pintura, permitiendo a los alumnos expresar su creatividad a través del arte."
+            android:paddingBottom="16dp" />
+
+        <!-- Taller de Oratoria -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/talleroratoria"
+            android:contentDescription="Taller de Oratoria" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller de Oratoria"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desarrolla habilidades de expresión oral, ayudando a los estudiantes a comunicarse con seguridad y claridad."
+            android:paddingBottom="16dp" />
+
+        <!-- Taller de Música -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/tallermusica"
+            android:contentDescription="Taller de Música" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller de Música"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se imparten clases de canto e instrumentos musicales, fomentando la creatividad y el talento artístico."
+            android:paddingBottom="16dp" />
+
+        <!-- Taller de Danza -->
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:src="@drawable/tallerdanza"
+            android:contentDescription="Taller de Danza" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taller de Danza"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se enseñan diversas técnicas de baile, promoviendo el desarrollo físico, la coordinación y el ritmo."
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnRegr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

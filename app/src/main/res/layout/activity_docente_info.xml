@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <!-- Docente 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📏 Profesor de Matemáticas"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/docente01"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📚 Prof. Lorena Albarracín\n🎓 Licenciado en Matemáticas - Universidad Nacional de Ingeniería\n📖 Asignatura: Álgebra y Trigonometría\n🎓 Especialización en Didáctica de la Matemática\n🕒 Horario de atención: Lunes y Miércoles 3:00 - 5:00 PM"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginVertical="12dp"/>
+
+        <!-- Docente 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📖 Profesora de Literatura"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/docente02"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📚 Prof. María López\n🎓 Licenciada en Lengua y Literatura - Pontificia Universidad Católica del Perú\n📖 Asignatura: Lenguaje y Comunicación\n🎓 Maestría en Educación con mención en Pedagogía\n🕒 Horario de atención: Martes y Jueves 2:00 - 4:00 PM"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginVertical="12dp"/>
+
+        <!-- Docente 3 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖 Profesor de Programación"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/docente03"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📚 Prof. Ricardo Gómez\n🎓 Ingeniero en Sistemas - Universidad de San Marcos\n📖 Asignatura: Programación y Robótica\n🎓 Especialización en Robótica Educativa y Desarrollo de Apps\n🕒 Horario de atención: Viernes 3:00 - 5:00 PM"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginVertical="12dp"/>
+
+        <!-- Docente 4 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔬 Profesor de Física y Química"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/docente04"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📚 Prof. Manuel Rodríguez\n🎓 Doctor en Ciencias Físicas - Universidad Nacional Mayor de San Marcos\n📖 Asignatura: Física y Química\n🎓 Especialización en Termodinámica y Mecánica Cuántica\n🕒 Horario de atención: Lunes y Viernes 10:00 AM - 12:00 PM"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:backgroundTint="@color/green"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

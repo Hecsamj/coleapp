@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_Administrador"
+            android:icon="@drawable/nav_registro"
+            android:title="Administrador"/>
+
+        <item
+            android:id="@+id/nav_alumno"
+            android:icon="@drawable/nav_alumno"
+            android:title="Alumno"/>
+
+        <item
+            android:id="@+id/nav_docente"
+            android:icon="@drawable/nav_docente"
+            android:title="Docente"/>
+
+        <item
+            android:id="@+id/nav_actividades"
+            android:icon="@drawable/nav_actividades"
+            android:title="Actividades"/>
+
+        <item
+            android:id="@+id/nav_noticias"
+            android:icon="@drawable/nav_noticias"
+            android:title="Noticias"/>
+
+        <!-- Visible solo si es administrador -->
+        <item
+            android:id="@+id/nav_matricula"
+            android:icon="@drawable/ic_matricula"
+            android:title="Matrícula"
+            android:visible="false" />
+
+        <!-- NUEVO: Visible solo si es administrador -->
+        <item
+            android:id="@+id/nav_gestion"
+            android:icon="@drawable/ic_gestion"
+            android:title="Gestión académica"
+            android:visible="false" />
+
+
+        <item
+            android:id="@+id/nav_cerrar_sesion_admin"
+            android:title="Cerrar sesión admin"
+            android:icon="@drawable/ic_logout"
+            android:visible="false"/>
+
+    </group>
+</menu>

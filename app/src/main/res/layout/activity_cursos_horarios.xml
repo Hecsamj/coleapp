@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FAFAFA">
+
+    <Spinner
+        android:id="@+id/spinnerNivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/select_nivel" />
+
+    <Spinner
+        android:id="@+id/spinnerGrado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:prompt="@string/select_grado" />
+
+    <Button
+        android:id="@+id/btnCargarCursos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cargar Cursos"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnAgregarCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Curso" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCursos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnVolverDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú"
+        android:layout_marginTop="8dp" />
+
+
+</LinearLayout>

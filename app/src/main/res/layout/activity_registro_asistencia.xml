@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutAsistencia"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Spinner para Nivel -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Nivel"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/spinnerNivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Spinner para Grado -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Grado"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+    <Spinner
+        android:id="@+id/spinnerGrado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Botón para cargar alumnos -->
+    <Button
+        android:id="@+id/btnCargarAlumnos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cargar Alumnos"
+        android:layout_marginTop="12dp" />
+
+    <!-- Lista de alumnos con checkbox -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAsistencia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="12dp" />
+
+    <!-- Botón para guardar asistencia -->
+    <Button
+        android:id="@+id/btnGuardarAsistencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar Asistencia"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón para volver al drawer -->
+    <Button
+        android:id="@+id/btnVolverDrawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú principal"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

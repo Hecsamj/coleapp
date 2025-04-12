@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ColeApp</string>
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+
+    <string name="select_nivel">Selecciona un nivel</string>
+    <string name="select_grado">Selecciona un grado</string>
+
+    <string name="nivel_prompt">Seleccione un nivel</string>
+    <string name="grado_prompt">Seleccione un grado</string>
+
+    <string-array name="niveles_array">
+        <item>Primaria</item>
+        <item>Secundaria</item>
+    </string-array>
+</resources>
+
