@@ -52,8 +52,9 @@
         android:id="@+id/etFechaNacimiento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha de nacimiento (YYYY-MM-DD)"
-        android:inputType="text"
+        android:hint="Fecha de nacimiento"
+        android:inputType="none"
+        android:focusable="false"
         android:layout_below="@id/etApellidoMaterno"
         android:layout_marginTop="10dp" />
 
@@ -108,7 +109,6 @@
         android:text="Registrar Matrícula"
         android:layout_below="@id/ivFotoEstudiante"
         android:layout_marginTop="20dp" />
-
 
     <Button
         android:id="@+id/btnVolver"
