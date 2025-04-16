@@ -10,5 +10,9 @@
     <color name="blue">#3F51B5</color>
     <color name="softgreen">#8BC34A</color>
     <color name="light_gray">#A09A9A</color>
+    <color name="verdeMatricula">#4CAF50</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="mustard">#FF9800</color>
+
 
 </resources>

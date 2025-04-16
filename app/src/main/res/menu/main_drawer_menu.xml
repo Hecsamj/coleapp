@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_docente"
             android:icon="@drawable/nav_docente"
-            android:title="Docente"/>
+            android:title="Listado de Docentes"/>
 
         <item
             android:id="@+id/nav_actividades"

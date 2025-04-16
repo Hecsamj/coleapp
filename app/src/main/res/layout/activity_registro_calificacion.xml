@@ -42,12 +42,14 @@
             android:id="@+id/btnRegistrarCalificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/skyblue"
             android:text="Registrar Calificación" />
 
         <Button
             android:id="@+id/btnVerCalificaciones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="Ver calificaciones registradas"
             android:layout_marginTop="12dp"/>
 

@@ -40,7 +40,7 @@
             android:id="@+id/btnVolverNoticias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver"
+            android:text="Volver al Menu"
             android:layout_margin="8dp"
             android:padding="8dp"
             android:elevation="4dp"

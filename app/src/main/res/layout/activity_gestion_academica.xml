@@ -6,13 +6,53 @@
     android:padding="16dp"
     android:background="#FAFAFA">
 
+    <TextView
+        android:id="@+id/tvTituloGestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestión Académica"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#2E7D32"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvBienvenidaAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido, Administrador del sistema"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvFechaHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha y hora actual"
+        android:textSize="14sp"
+        android:textColor="#666"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
     <GridView
         android:id="@+id/gridOpciones"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:numColumns="2"
         android:verticalSpacing="16dp"
         android:horizontalSpacing="16dp"
         android:gravity="center" />
 
+    <Button
+        android:id="@+id/btnSalirGestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú principal"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="#388E3C"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

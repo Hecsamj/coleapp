@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Cargar Asistencias"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#4CAF50"
+        android:backgroundTint="@color/skyblue"
         android:textColor="#FFFFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Volver al menú principal"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#9E9E9E"
+        android:backgroundTint="@color/green"
         android:textColor="#FFFFFF" />
 
 

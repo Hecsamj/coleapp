@@ -2,14 +2,17 @@ package com.example.coleapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AlumnoActivity : AppCompatActivity() {
 
@@ -21,10 +24,11 @@ class AlumnoActivity : AppCompatActivity() {
     private lateinit var tvMatricula: TextView
     private lateinit var tvGrado: TextView
     private lateinit var tvCorreo: TextView
-    private lateinit var tvApellidoPaterno: TextView  // NUEVO
-    private lateinit var tvApellidoMaterno: TextView  // NUEVO
-    private lateinit var tvColegioProcedencia: TextView  // NUEVO
-    private lateinit var tvFechaNacimiento: TextView  // NUEVO
+    private lateinit var tvApellidoPaterno: TextView
+    private lateinit var tvApellidoMaterno: TextView
+    private lateinit var tvColegioProcedencia: TextView
+    private lateinit var tvFechaNacimiento: TextView
+    private lateinit var tvFechaRegistro: TextView
     private lateinit var imgFoto: ImageView
     private lateinit var btnCerrarSesion: Button
 
@@ -32,7 +36,7 @@ class AlumnoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alumno)
 
-        // Inicialización de las vistas
+        // Referencias de vistas
         spinnerNivel = findViewById(R.id.spinnerNivel)
         spinnerGrado = findViewById(R.id.spinnerGrado)
         btnActualizarCursos = findViewById(R.id.btnActualizarCursos)
@@ -40,18 +44,23 @@ class AlumnoActivity : AppCompatActivity() {
         tvNombre = findViewById(R.id.tvNombre)
         tvMatricula = findViewById(R.id.tvMatricula)
         tvGrado = findViewById(R.id.tvGrado)
-        tvCorreo = findViewById(R.id.tvCorreo) // Campo para mostrar el correo
-        tvApellidoPaterno = findViewById(R.id.tvApellidoPaterno)  // NUEVO
-        tvApellidoMaterno = findViewById(R.id.tvApellidoMaterno)  // NUEVO
-        tvColegioProcedencia = findViewById(R.id.tvColegioProcedencia)  // NUEVO
-        tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento)  // NUEVO
+        tvCorreo = findViewById(R.id.tvCorreo)
+        tvApellidoPaterno = findViewById(R.id.tvApellidoPaterno)
+        tvApellidoMaterno = findViewById(R.id.tvApellidoMaterno)
+        tvColegioProcedencia = findViewById(R.id.tvColegioProcedencia)
+        tvFechaNacimiento = findViewById(R.id.tvFechaNacimiento)
+        tvFechaRegistro = findViewById(R.id.tvFechaRegistro)
         imgFoto = findViewById(R.id.imgFoto)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
-        // Obtener datos de matrícula
+        configurarSpinners()
         obtenerDatosMatricula()
 
-        // Configurar Spinners
+        btnActualizarCursos.setOnClickListener { actualizarCursos() }
+        btnCerrarSesion.setOnClickListener { cerrarSesion() }
+    }
+
+    private fun configurarSpinners() {
         val niveles = arrayOf("Primaria", "Secundaria")
         val gradosPrimaria = arrayOf("1ro", "2do", "3ro", "4to", "5to", "6to")
         val gradosSecundaria = arrayOf("1ro", "2do", "3ro", "4to", "5to")
@@ -60,39 +69,17 @@ class AlumnoActivity : AppCompatActivity() {
         adapterNivel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerNivel.adapter = adapterNivel
 
-        // Configurar el listener para el Spinner de nivel
         spinnerNivel.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val grados = if (spinnerNivel.selectedItem == "Primaria") gradosPrimaria else gradosSecundaria
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val grados = if (niveles[position] == "Primaria") gradosPrimaria else gradosSecundaria
                 val adapterGrado = ArrayAdapter(this@AlumnoActivity, android.R.layout.simple_spinner_item, grados)
                 adapterGrado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinnerGrado.adapter = adapterGrado
             }
 
-            override fun onNothingSelected(parentView: AdapterView<*>) {
-                // Nada que hacer si no se selecciona nada
-            }
-        }
-
-        // Configurar botón para actualizar cursos
-        btnActualizarCursos.setOnClickListener {
-            actualizarCursos()
-        }
-
-        // Configurar el botón de cerrar sesión
-        btnCerrarSesion.setOnClickListener {
-            cerrarSesion()
+            override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
-
-    private fun mostrarDatosEnDialog(nombres: String, apellidoPaterno: String, apellidoMaterno: String, matricula: String, grado: String, correo: String, colegioProcedencia: String, fechaNacimiento: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Detalles de Matrícula")
-            .setMessage("Nombre: $nombres\nApellido Paterno: $apellidoPaterno\nApellido Materno: $apellidoMaterno\nMatrícula: $matricula\nGrado: $grado\nCorreo: $correo\nColegio de Procedencia: $colegioProcedencia\nFecha de Nacimiento: $fechaNacimiento")
-            .setPositiveButton("Aceptar", null)
-            .show()
-    }
-
 
     private fun obtenerDatosMatricula() {
         val userEmail = FirebaseAuth.getInstance().currentUser?.email
@@ -101,53 +88,62 @@ class AlumnoActivity : AppCompatActivity() {
             return
         }
 
-        Log.d("UserEmail", "Correo del usuario logueado: $userEmail") // Verificar el correo del usuario
-
         val db = FirebaseFirestore.getInstance()
-        val matriculaRef = db.collection("Matriculas").document(userEmail)
-
-        Log.d("Firestore", "Referencia de Firestore: $matriculaRef") // Verificar la referencia al documento en Firestore
+        val matriculaRef = db.collection("matriculas").document(userEmail)
 
         matriculaRef.get().addOnSuccessListener { document ->
             if (document.exists()) {
-                Log.d("Firestore", "Documento encontrado con éxito")
+                tvNombre.text = "Nombre: ${document.getString("nombre") ?: "No disponible"}"
+                tvGrado.text = "Grado: ${document.getString("grado") ?: "No disponible"}"
+                tvCorreo.text = "Correo: ${document.getString("correo") ?: "No disponible"}"
+                tvApellidoPaterno.text = "Apellido Paterno: ${document.getString("apellidoPaterno") ?: "No disponible"}"
+                tvApellidoMaterno.text = "Apellido Materno: ${document.getString("apellidoMaterno") ?: "No disponible"}"
+                tvColegioProcedencia.text = "Colegio de Procedencia: ${document.getString("colegioProcedencia") ?: "No disponible"}"
+                tvFechaNacimiento.text = "Fecha de Nacimiento: ${document.getString("fechaNacimiento") ?: "No disponible"}"
 
-                // Obtener los campos del documento
-                val nombre = document.getString("nombre") ?: "Nombre no disponible"
-                val matricula = document.getString("matricula") ?: "Matrícula no disponible"
-                val grado = document.getString("grado") ?: "Grado no disponible"
-                val correo = document.getString("correo") ?: "Correo no disponible"
-                val apellidoPaterno = document.getString("apellidoPaterno") ?: "Apellido Paterno no disponible"
-                val apellidoMaterno = document.getString("apellidoMaterno") ?: "Apellido Materno no disponible"
-                val colegioProcedencia = document.getString("colegioProcedencia") ?: "Colegio no disponible"
-                val fechaNacimiento = document.getString("fechaNacimiento") ?: "Fecha de Nacimiento no disponible"
+                // Matrícula: Activa (solo "Activa" en verde)
+                val textoMatricula = "Matrícula: Activa"
+                val spannable = SpannableString(textoMatricula)
+                val verde = resources.getColor(R.color.verdeMatricula, theme)
+                spannable.setSpan(
+                    ForegroundColorSpan(verde),
+                    textoMatricula.indexOf("Activa"),
+                    textoMatricula.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                tvMatricula.text = spannable
 
-                // Mostrar los datos en los logs para verificar que estamos obteniendo la información correctamente
-                Log.d("Firestore", "Datos obtenidos: $nombre, $matricula, $grado, $correo")
+                // Mostrar fecha de registro con la fecha actual
+                val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+                tvFechaRegistro.text = "Registrado el: $fechaActual"
+                tvFechaRegistro.visibility = View.VISIBLE
 
-                // Actualizar la UI con los datos obtenidos
-                tvNombre.text = "Nombre: $nombre"
-                tvMatricula.text = "Matrícula: $matricula"
-                tvGrado.text = "Grado: $grado"
-                tvCorreo.text = "Correo: $correo"
-                tvApellidoPaterno.text = "Apellido Paterno: $apellidoPaterno"
-                tvApellidoMaterno.text = "Apellido Materno: $apellidoMaterno"
-                tvColegioProcedencia.text = "Colegio de Procedencia: $colegioProcedencia"
-                tvFechaNacimiento.text = "Fecha de Nacimiento: $fechaNacimiento"
+                // Foto de perfil
+                val fotoUrl = document.getString("fotoUrl")
+                if (!fotoUrl.isNullOrEmpty()) {
+                    Glide.with(this).load(fotoUrl).into(imgFoto)
+                } else {
+                    imgFoto.setImageResource(R.drawable.ic_user)
+                }
+
             } else {
-                Log.d("Firestore", "Documento no existe")
                 Toast.makeText(this, "No se encontraron datos de matrícula", Toast.LENGTH_SHORT).show()
+                tvMatricula.text = ""
+                tvFechaRegistro.visibility = View.GONE
             }
-        }.addOnFailureListener { e ->
-            Log.e("Firestore", "Error al obtener documento: ${e.message}")
+        }.addOnFailureListener {
             Toast.makeText(this, "Error al obtener datos de matrícula", Toast.LENGTH_SHORT).show()
         }
     }
 
-
     private fun actualizarCursos() {
-        val nivelSeleccionado = spinnerNivel.selectedItem.toString()
-        val gradoSeleccionado = spinnerGrado.selectedItem.toString()
+        val nivelSeleccionado = spinnerNivel.selectedItem?.toString()
+        val gradoSeleccionado = spinnerGrado.selectedItem?.toString()
+
+        if (nivelSeleccionado.isNullOrEmpty() || gradoSeleccionado.isNullOrEmpty()) {
+            Toast.makeText(this, "Seleccione nivel y grado", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val coleccion = if (nivelSeleccionado == "Primaria") "CursosPrimaria" else "CursosSecundaria"
 
@@ -160,20 +156,18 @@ class AlumnoActivity : AppCompatActivity() {
                 val horarios = document.get("horarios") as? List<String> ?: emptyList()
                 mostrarCursosEnUI(cursos, horarios)
             } else {
-                Toast.makeText(this, "No se encontraron datos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No se encontraron cursos para ese grado", Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener { e ->
+        }.addOnFailureListener {
             Toast.makeText(this, "Error al obtener cursos", Toast.LENGTH_SHORT).show()
-            e.printStackTrace()
         }
     }
 
     private fun mostrarCursosEnUI(cursos: List<String>, horarios: List<String>) {
-        contenedorCursos.removeAllViews() // Limpia la lista antes de actualizar
+        contenedorCursos.removeAllViews()
 
-        for (i in cursos.indices) {
-            val curso = cursos[i]
-            val horario = horarios.getOrNull(i) ?: "Horario no disponible"
+        cursos.forEachIndexed { index, curso ->
+            val horario = horarios.getOrNull(index) ?: "Horario no disponible"
 
             val textView = TextView(this).apply {
                 text = "$curso - $horario"
@@ -186,10 +180,10 @@ class AlumnoActivity : AppCompatActivity() {
     }
 
     private fun cerrarSesion() {
-        FirebaseAuth.getInstance().signOut() // Cerrar sesión en Firebase
-        val intent = Intent(this, DrawerBaseActivity::class.java) // Redirigir al Login
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, DrawerBaseActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-        finish() // Finalizar la actividad actual
+        finish()
     }
 }

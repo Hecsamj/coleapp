@@ -45,7 +45,7 @@ class VerCalificacionesActivity : AppCompatActivity() {
         }
 
         btnVolver.setOnClickListener {
-            startActivity(Intent(this, DrawerBaseActivity::class.java))
+            startActivity(Intent(this, GestionAcademicaActivity::class.java))
             finish()
         }
     }

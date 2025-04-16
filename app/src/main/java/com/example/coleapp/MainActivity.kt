@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etCorreoLogin: EditText
     private lateinit var etPasswordLogin: EditText
     private lateinit var btnLogin: Button
+    private lateinit var btnVolverMenu: Button
     private lateinit var tvOlvidastePassword: TextView
     private lateinit var auth: FirebaseAuth
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         etCorreoLogin = findViewById(R.id.etCorreoLogin)
         etPasswordLogin = findViewById(R.id.etPasswordLogin)
         btnLogin = findViewById(R.id.btnLogin)
+        btnVolverMenu = findViewById(R.id.btnVolverMenu) // <- NUEVO
         tvOlvidastePassword = findViewById(R.id.tvOlvidastePassword)
 
         // Botón para iniciar sesión
@@ -45,9 +47,18 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, AlumnoActivity::class.java)
-                        startActivity(intent)
-                        finish()
+
+                        // Si es administrador, ir al Drawer con modo admin
+                        if (correo == "pi44140208@idat.pe") {
+                            val intent = Intent(this, DrawerBaseActivity::class.java)
+                            intent.putExtra("esAdmin", true)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            val intent = Intent(this, AlumnoActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     } else {
                         Toast.makeText(this, "Error al iniciar sesión: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
@@ -70,6 +81,13 @@ class MainActivity : AppCompatActivity() {
                 .addOnFailureListener {
                     Toast.makeText(this, "Error: ${it.message}", Toast.LENGTH_SHORT).show()
                 }
+        }
+
+        // Botón para volver al menú (Drawer)
+        btnVolverMenu.setOnClickListener {
+            val intent = Intent(this, DrawerBaseActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

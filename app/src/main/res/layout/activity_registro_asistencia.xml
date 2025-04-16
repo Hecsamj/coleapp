@@ -34,6 +34,7 @@
         android:id="@+id/btnCargarAlumnos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/skyblue"
         android:text="Cargar Alumnos"
         android:layout_marginTop="12dp" />
 
@@ -50,6 +51,7 @@
         android:id="@+id/btnGuardarAsistencia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:text="Guardar Asistencia"
         android:layout_marginTop="8dp" />
 
@@ -58,6 +60,7 @@
         android:id="@+id/btnVolverDrawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:text="Volver al menú principal"
         android:layout_marginTop="8dp" />
 </LinearLayout>

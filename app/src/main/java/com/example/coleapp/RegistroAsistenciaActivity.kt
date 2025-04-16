@@ -2,10 +2,15 @@ package com.example.coleapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroAsistenciaActivity : AppCompatActivity() {
@@ -44,7 +49,8 @@ class RegistroAsistenciaActivity : AppCompatActivity() {
                 parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long
             ) {
                 val nivelSeleccionado = niveles[position]
-                val grados = if (nivelSeleccionado == "Primaria") gradosPrimaria else gradosSecundaria
+                val grados =
+                    if (nivelSeleccionado == "Primaria") gradosPrimaria else gradosSecundaria
 
                 val gradoAdapter = ArrayAdapter(
                     this@RegistroAsistenciaActivity,
@@ -63,7 +69,7 @@ class RegistroAsistenciaActivity : AppCompatActivity() {
         btnGuardarAsistencia.setOnClickListener { guardarAsistencias() }
 
         btnVolverDrawer.setOnClickListener {
-            startActivity(Intent(this, DrawerBaseActivity::class.java))
+            startActivity(Intent(this, GestionAcademicaActivity::class.java))
             finish()
         }
     }
@@ -89,7 +95,8 @@ class RegistroAsistenciaActivity : AppCompatActivity() {
 
     private fun guardarAsistencias() {
         val asistencias = adapter.obtenerAsistencias()
-        val fecha = System.currentTimeMillis().toString()
+        val total = asistencias.size
+        var guardados = 0
 
         for (asistencia in asistencias) {
             val asistenciaMap = hashMapOf(
@@ -98,12 +105,25 @@ class RegistroAsistenciaActivity : AppCompatActivity() {
                 "nivel" to asistencia.nivel,
                 "grado" to asistencia.grado,
                 "asistio" to asistencia.asistio,
-                "fecha" to fecha
+                "fecha" to Timestamp.now()
             )
 
             db.collection("asistencias").add(asistenciaMap)
+                .addOnSuccessListener {
+                    guardados++
+                    if (guardados == total) {
+                        Toast.makeText(
+                            this,
+                            "Asistencias guardadas correctamente",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error al guardar una asistencia", Toast.LENGTH_SHORT)
+                        .show()
+                }
         }
-
-        Toast.makeText(this, "Asistencias guardadas correctamente", Toast.LENGTH_SHORT).show()
     }
 }
+

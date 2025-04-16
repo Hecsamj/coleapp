@@ -44,6 +44,7 @@
         android:id="@+id/btnVolverDrawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
         android:text="Volver al menú"
         android:layout_marginTop="8dp" />
 

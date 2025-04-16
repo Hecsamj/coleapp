@@ -14,11 +14,16 @@
         android:textStyle="bold"
         android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/txtEstadoAsistencia"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkAsistio"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Asistió"
-        android:textSize="14sp"
-        android:textColor="#4CAF50" />
+        android:text="Asistió" />
+
+    <CheckBox
+        android:id="@+id/checkNoAsistio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No asistió" />
+
 </LinearLayout>

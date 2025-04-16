@@ -12,6 +12,7 @@ class RegistroCalificacionActivity : AppCompatActivity() {
     private lateinit var spinnerCurso: Spinner
     private lateinit var editTextNota: EditText
     private lateinit var btnRegistrarCalificacion: Button
+    private lateinit var btnVerCalificaciones: Button
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -26,6 +27,7 @@ class RegistroCalificacionActivity : AppCompatActivity() {
         spinnerCurso = findViewById(R.id.spinnerCurso)
         editTextNota = findViewById(R.id.editTextNota)
         btnRegistrarCalificacion = findViewById(R.id.btnRegistrarCalificacion)
+        btnVerCalificaciones = findViewById(R.id.btnVerCalificaciones)
 
         cargarAlumnos()
 
@@ -42,6 +44,10 @@ class RegistroCalificacionActivity : AppCompatActivity() {
 
         btnRegistrarCalificacion.setOnClickListener {
             registrarCalificacion()
+        }
+
+        btnVerCalificaciones.setOnClickListener {
+            startActivity(Intent(this, VerCalificacionesActivity::class.java))
         }
     }
 
@@ -120,7 +126,6 @@ class RegistroCalificacionActivity : AppCompatActivity() {
             "grado" to grado,
             "nivel" to nivel,
             "nota" to nota
-            // Puedes añadir "trimestre" aquí luego si lo deseas
         )
 
         db.collection("calificaciones").add(calificacion)
@@ -131,10 +136,5 @@ class RegistroCalificacionActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Error al registrar: ${it.message}", Toast.LENGTH_SHORT).show()
             }
-        val btnVerCalificaciones: Button = findViewById(R.id.btnVerCalificaciones)
-        btnVerCalificaciones.setOnClickListener {
-            startActivity(Intent(this, VerCalificacionesActivity::class.java))
-        }
-
     }
 }

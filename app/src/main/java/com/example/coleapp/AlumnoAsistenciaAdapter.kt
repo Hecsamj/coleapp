@@ -3,8 +3,8 @@ package com.example.coleapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class AlumnoAsistenciaAdapter(
@@ -49,15 +49,31 @@ class AlumnoAsistenciaAdapter(
         val alumno = listaAsistencias[position]
         holder.txtNombre.text = alumno.nombre
 
-        holder.txtEstado.text = if (alumno.asistio) "Asistió" else "No asistió"
-        val color = if (alumno.asistio) R.color.green else R.color.red
-        holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, color))
+        // Estado inicial
+        holder.checkAsistio.isChecked = alumno.asistio
+        holder.checkNoAsistio.isChecked = !alumno.asistio
+
+        // Listeners cruzados
+        holder.checkAsistio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                holder.checkNoAsistio.isChecked = false
+                listaAsistencias[position].asistio = true
+            }
+        }
+
+        holder.checkNoAsistio.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                holder.checkAsistio.isChecked = false
+                listaAsistencias[position].asistio = false
+            }
+        }
     }
 
     override fun getItemCount(): Int = listaAsistencias.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtNombre: TextView = itemView.findViewById(R.id.txtNombreAlumno)
-        val txtEstado: TextView = itemView.findViewById(R.id.txtEstadoAsistencia)
+        val checkAsistio: CheckBox = itemView.findViewById(R.id.checkAsistio)
+        val checkNoAsistio: CheckBox = itemView.findViewById(R.id.checkNoAsistio)
     }
 }

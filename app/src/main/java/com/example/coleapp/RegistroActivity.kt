@@ -20,6 +20,7 @@ class RegistroActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        // Botón para iniciar sesión del administrador
         binding.btnRegistrar.setOnClickListener {
             val email = binding.etCorreoReg.text.toString().trim()
             val password = binding.etPasswordReg.text.toString().trim()
@@ -45,6 +46,7 @@ class RegistroActivity : AppCompatActivity() {
                 }
         }
 
+        // Botón para recuperar contraseña
         binding.btnRecuperarClave.setOnClickListener {
             val email = binding.etCorreoReg.text.toString().trim()
             if (email != adminEmail) {
@@ -59,6 +61,13 @@ class RegistroActivity : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
+        }
+
+        // 🔙 Botón para volver al menú principal
+        binding.btnVolverMenu.setOnClickListener {
+            val intent = Intent(this, DrawerBaseActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

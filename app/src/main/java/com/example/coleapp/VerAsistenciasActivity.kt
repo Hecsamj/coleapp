@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 
 class VerAsistenciasActivity : AppCompatActivity() {
@@ -37,15 +38,9 @@ class VerAsistenciasActivity : AppCompatActivity() {
         spinnerNivel.adapter = adapterNivel
 
         spinnerNivel.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
                 val grados = if (niveles[position] == "Primaria") gradosPrimaria else gradosSecundaria
-                val adapterGrado = ArrayAdapter(
-                    this@VerAsistenciasActivity,
-                    android.R.layout.simple_spinner_item,
-                    grados
-                )
+                val adapterGrado = ArrayAdapter(this@VerAsistenciasActivity, android.R.layout.simple_spinner_item, grados)
                 adapterGrado.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinnerGrado.adapter = adapterGrado
             }
@@ -56,7 +51,7 @@ class VerAsistenciasActivity : AppCompatActivity() {
         btnCargar.setOnClickListener { cargarAsistencias() }
 
         btnVolver.setOnClickListener {
-            startActivity(Intent(this, DrawerBaseActivity::class.java))
+            startActivity(Intent(this, GestionAcademicaActivity::class.java))
             finish()
         }
     }
@@ -76,8 +71,9 @@ class VerAsistenciasActivity : AppCompatActivity() {
                     val nivel = doc.getString("nivel") ?: return@mapNotNull null
                     val grado = doc.getString("grado") ?: return@mapNotNull null
                     val asistio = doc.getBoolean("asistio") ?: false
+                    val fecha = doc.getTimestamp("fecha") // ✅ usamos el campo fecha
 
-                    AlumnoAsistencia(correo, nombre, nivel, grado, asistio)
+                    AlumnoAsistencia(correo, nombre, nivel, grado, asistio, fecha)
                 }
 
                 val adapter = VerAsistenciasAdapter(listaAsistencias)

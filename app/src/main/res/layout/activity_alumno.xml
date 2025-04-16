@@ -21,7 +21,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Matrícula"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvFechaRegistro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrado el: "
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
 
         <TextView
             android:id="@+id/tvGrado"
@@ -97,6 +108,7 @@
             android:id="@+id/btnActualizarCursos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/skyblue"
             android:text="Actualizar Cursos"
             android:layout_marginTop="8dp" />
 
@@ -118,6 +130,7 @@
             android:id="@+id/btnCerrarSesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="Cerrar Sesión"
             android:layout_marginTop="8dp" />
 

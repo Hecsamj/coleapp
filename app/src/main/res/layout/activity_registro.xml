@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="60dp" />
 
     <EditText
         android:id="@+id/etCorreoReg"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvTituloLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="32dp" />
 
     <EditText
         android:id="@+id/etPasswordReg"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/etCorreoReg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/btnRegistrar"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/etPasswordReg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="24dp" />
 
     <Button
         android:id="@+id/btnRecuperarClave"
@@ -62,6 +62,20 @@
         app:layout_constraintTop_toBottomOf="@id/btnRegistrar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
+
+    <!-- NUEVO BOTÓN -->
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintTop_toBottomOf="@id/btnRecuperarClave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
